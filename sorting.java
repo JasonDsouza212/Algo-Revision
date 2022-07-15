@@ -3,8 +3,11 @@ import java.util.Arrays;
 public class sorting {
     public static void main(String[] args) {
         int arr[]={4,3,2,1,6,5,2,32,12};
+        int arr2[]={5,3,2,4,1};
         insertionSort(arr);
         System.out.println(Arrays.toString(arr));
+        cyslicSort(arr2);
+        System.out.println(Arrays.toString(arr2));
     }
     static void bubbleSort(int arr[]){
         boolean swapped;
@@ -57,5 +60,18 @@ public class sorting {
         int temp=arr[one];
          arr[one]=arr[two];
         arr[two]=temp;
+    }
+    static void cyslicSort(int arr[]){
+        int i=0;
+        while(i<arr.length){
+            int correct=arr[i]-1;
+            if(arr[i]!=arr[correct]){
+                int temp=arr[i];
+                arr[i]=arr[correct];
+                arr[correct]=temp;
+            }else{
+                i++;
+            }
+        }
     }
 }
