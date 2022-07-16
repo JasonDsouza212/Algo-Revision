@@ -5,6 +5,7 @@ public class arrRecursion {
         int arr[]={1,2,3,4,5,2,6};
         System.out.println(sorted(arr,1));
         System.out.println(searchindexAndaddToList(arr,2,0,new ArrayList<>()));
+        System.out.println(createInside(arr,2,0));
     }
     static boolean sorted(int arr[],int i){
         if(i>=arr.length){
@@ -37,5 +38,18 @@ public class arrRecursion {
             a.add(i);
         }
             return searchindexAndaddToList(arr,target,i+1,a);
+    }
+    static ArrayList<Integer> createInside(int arr[],int target,int i){
+        if(i>=arr.length){
+            return new ArrayList<Integer>();
+        }
+        ArrayList<Integer> a=new ArrayList<>();
+        if(arr[i]==target){
+            a.add(i);
+        }
+        ArrayList<Integer> ans=createInside( arr,target,i+1);
+        a.addAll(ans);
+        return a;
+
     }
 }
