@@ -89,4 +89,25 @@ public class mazeProblem {
         }
         return ans;
     }
+    static void bacTracing(boolean arr[][],String p,int r,int c){
+        if(r==arr.length-1&&c==arr[0].length-1){
+            System.out.println(p);
+            return;
+        }
+        if(!arr[r][c]){
+            return;
+        }
+        if(r<arr.length-1){
+            bacTracing(arr,p+"D",r+1,c);
+        }
+        if(c<arr[0].length-1){
+            bacTracing(arr,p+"R",r,c+1);
+        }
+        if(r>0){
+            bacTracing(arr,p+"U",r-1,c);
+        }
+        if(c>0){
+            bacTracing(arr,p+"R",r,c-1);
+        }
+    }
 }
