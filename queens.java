@@ -5,7 +5,8 @@ public class queens {
                 {true,true,true},
                 {true,true,true}
         };
-        boolean ans[][]=new boolean[4][4];
+        int n=5;
+        boolean ans[][]=new boolean[n][n];
         q(ans,0);
     }
     static void q(boolean arr[][],int row){
