@@ -5,7 +5,7 @@ public class queens {
                 {true,true,true},
                 {true,true,true}
         };
-        int n=5;
+        int n=4;
         boolean ans[][]=new boolean[n][n];
         q(ans,0);
     }
