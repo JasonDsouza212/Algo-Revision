@@ -37,7 +37,7 @@ public class Sll {
             insertLast(val);
             return;
         }
-        Node temp=head;
+        Node temp=head;s
          for(int i=1;i<index;i++){
              temp=temp.next;
          }
