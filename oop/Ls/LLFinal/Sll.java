@@ -37,7 +37,7 @@ public class Sll {
             insertLast(val);
             return;
         }
-        Node temp=head;s
+        Node temp=head;
          for(int i=1;i<index;i++){
              temp=temp.next;
          }
@@ -46,6 +46,27 @@ public class Sll {
             temp.next=node;
             node.next=nextVal;
             size++;
+    }
+
+    public void recIns(int index,int val){
+        if(index<0 || index>size){
+            System.out.println("You Cannot insert at "+index+" position");
+            return;
+        }
+        head=rec(index,val,head);
+        if(tail==null){
+            tail=head;
+        }
+    }
+    private Node rec(int ind,int val,Node node){
+        if(ind==0){
+            Node temp=new Node(val);
+            temp.next=node;
+            size++;
+            return temp;
+        }
+        node.next=rec(ind-1,val,node.next);
+        return node;
     }
 
     public void deleteStart(){
