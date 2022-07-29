@@ -2,7 +2,7 @@ package oop.Ls.LLFinal;
 
 public class Sll {
     private int size=0;
-    private Node head;
+    public static Node head;
     private Node tail;
 
     public void insertFirst(int val){
@@ -17,6 +17,7 @@ public class Sll {
     public void insertLast(int val){
         if(head==null){
             insertFirst(val);
+            return;
         }
         Node node=new Node(val);
         node.next=null;
@@ -159,9 +160,12 @@ public class Sll {
        private int value;
        private Node next;
 
+      Node(){
 
+      }
 
        public Node(int value) {
+
            this.value = value;
        }
 
@@ -170,4 +174,67 @@ public class Sll {
            this.next = next;
        }
    }
+
+
+//   #===========================================================================================================================
+public Node sortList(Node head) {
+    if(head ==null || head.next == null){
+        return head;
+    }
+    Node mid=middleNode(head);
+    Node right= sortList(mid.next);
+    mid.next=null;
+    Node left= sortList(head);
+
+
+    return mergeTwoLists(left,right);
+}
+    Node mergeTwoLists(Node list1, Node list2){
+        Node head=new Node();
+       Node tail=head;
+        while(list1 !=null &&list2 !=null){
+            if(list1.value<list2.value){
+                tail.next=list1;
+                list1=list1.next;
+                tail=tail.next;
+            }else{
+                tail.next=list2;
+                list2=list2.next;
+                tail=tail.next;
+            }
+        }
+        while(list1!=null){
+            tail.next=list1;
+            list1=list1.next;
+            tail=tail.next;
+        }
+        while(list2!=null){
+            tail.next=list2;
+            list2=list2.next;
+            tail=tail.next;
+        }
+        return head.next;
+    }
+    Node middleNode(Node head){
+        Node fast=head;
+        Node slow=head;
+        while(fast!=null && fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        return slow;
+    }
+
+    public static void main(String[] args) {
+        Sll list=new Sll();
+        list.insertLast(5);
+        list.insertLast(4);
+        list.insertLast(3);
+        list.insertLast(2);
+        list.insertLast(1);
+        list.display();
+        System.out.println(list.sortList(head));
+    }
+
+
 }
