@@ -231,6 +231,52 @@ public Node sortList(Node head) {
         return mid;
     }
 
+//      =============================================================================================================bubble Sort
+    public void bubble(){
+         bsort(5-1,0);
+    }
+    public void bsort(int row,int col){
+        if(row==0){
+            return ;
+        }
+        if(col<row) {
+            Node first = get(col);
+            Node second = get(col + 1);
+            if (second.value < first.value) {
+                if (first == head) {
+                    head = second;
+                    first.next = second.next;
+                    second.next = first;
+                } else if (second == tail) {
+                    Node prev = get(col - 1);
+                    tail = first;
+                    prev.next = second;
+                    second.next = tail;
+                    first.next = null;
+
+                } else {
+                    Node prev = get(col - 1);
+                    prev.next = first.next;
+                    first.next = second.next;
+                    second.next = first;
+                }
+            }
+                bsort(row, col + 1);
+            
+        }else {
+            bsort(row - 1, 0);
+        }
+    }
+    public Node get(int col){
+        Node temp=head;
+        for(int i=1;i<=col;i++){
+            temp=temp.next;
+        }
+        return temp;
+    }
+
+
+
     public static void main(String[] args) {
         Sll list=new Sll();
         list.insertLast(5);
@@ -241,7 +287,11 @@ public Node sortList(Node head) {
         list.display();
 //        sortList(list);
         list.display();
+//        System.out.println(list.get(2));
+        list.bubble();
+        list.display();
     }
+
 
 
 }
