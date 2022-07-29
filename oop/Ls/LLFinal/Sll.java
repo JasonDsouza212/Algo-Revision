@@ -182,9 +182,9 @@ public Node sortList(Node head) {
         return head;
     }
     Node mid=middleNode(head);
-    Node right= sortList(mid.next);
+    Node right= sortList(head);
     mid.next=null;
-    Node left= sortList(head);
+    Node left= sortList(mid);
 
 
     return mergeTwoLists(left,right);
@@ -216,13 +216,19 @@ public Node sortList(Node head) {
         return head.next;
     }
     Node middleNode(Node head){
-        Node fast=head;
-        Node slow=head;
-        while(fast!=null && fast.next!=null){
-            slow=slow.next;
-            fast=fast.next.next;
+         Node fakemid=null;
+        while(head!=null && head.next!=null){
+            if(fakemid==null){
+                fakemid=head;
+            }else{
+                fakemid=fakemid.next;
+            }
+
+            head=head.next.next;
         }
-        return slow;
+        Node mid=fakemid.next;
+        fakemid.next=null;
+        return mid;
     }
 
     public static void main(String[] args) {
@@ -233,7 +239,8 @@ public Node sortList(Node head) {
         list.insertLast(2);
         list.insertLast(1);
         list.display();
-        System.out.println(list.sortList(head));
+//        sortList(list);
+        list.display();
     }
 
 
