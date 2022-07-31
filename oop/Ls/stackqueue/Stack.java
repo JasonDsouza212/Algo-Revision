@@ -1,27 +1,29 @@
 package oop.Ls.stackqueue;
 
-public class stack {
+public class Stack {
     private int arr[];
     private static int size=10;
 
     int pointer=-1;
-    public stack(){
+    public Stack(){
         this(size);
     }
-    public stack(int size){
+    public Stack(int size){
         this.arr=new int[size];
     }
 
     public void push(int val){
         if(pointer==arr.length-1){
-            System.out.print("Stack is full");
+            System.out.println("Stack is full");
+            return;
         }
         pointer++;
         arr[pointer]=val;
     }
     public void pop(){
         if(pointer== -1){
-            System.out.print("Stack is full");
+            System.out.println("Stack is Empty");
+            return;
         }
         int poped=arr[pointer];
         System.out.println(poped);
@@ -32,10 +34,13 @@ public class stack {
     }
     public void display(){
         if(pointer== -1){
-            System.out.print("Stack is full");
+            System.out.println("Stack is empty");
+
+            return;
         }
        for(int i=0;i<=pointer;i++){
            System.out.print(arr[i]+" ");
        }
+        System.out.println();
     }
 }
