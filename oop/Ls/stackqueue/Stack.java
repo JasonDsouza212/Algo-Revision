@@ -1,8 +1,8 @@
 package oop.Ls.stackqueue;
 
 public class Stack {
-    private int arr[];
-    private static int size=10;
+    protected int arr[];
+    protected static int size=10;
 
     int pointer=-1;
     public Stack(){
