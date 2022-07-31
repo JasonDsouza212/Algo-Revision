@@ -262,7 +262,7 @@ public Node sortList(Node head) {
                 }
             }
                 bsort(row, col + 1);
-            
+
         }else {
             bsort(row - 1, 0);
         }
